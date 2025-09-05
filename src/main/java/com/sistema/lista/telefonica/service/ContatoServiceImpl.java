@@ -37,4 +37,10 @@ public class ContatoServiceImpl implements ContatoService{
         return contatoList.stream().map(contatoMapper::toResponse).collect(Collectors.toList());
     }
 
+    @Override
+    public ContatoResponse pegarUsuarioPorId(long id) {
+        var contato = contatoRepository.buscarContatoPorId(id);
+        return contatoMapper.toResponse(contato);
+    }
+
 }

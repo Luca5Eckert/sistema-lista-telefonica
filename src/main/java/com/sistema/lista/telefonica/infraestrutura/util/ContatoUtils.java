@@ -1,6 +1,7 @@
 package com.sistema.lista.telefonica.infraestrutura.util;
 
 import com.sistema.lista.telefonica.dto.ContatoResponse;
+import com.sistema.lista.telefonica.exception.contato.ContatoBancoDadosException;
 
 import java.util.List;
 
@@ -13,5 +14,6 @@ public class ContatoUtils {
             contatoResponses.forEach(System.out::println);
         }
     }
+
 
 }

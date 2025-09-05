@@ -14,4 +14,5 @@ public interface ContatoService {
     List<ContatoResponse> buscarContatoPorNome(String nome);
 
 
+    ContatoResponse pegarUsuarioPorId(long id);
 }

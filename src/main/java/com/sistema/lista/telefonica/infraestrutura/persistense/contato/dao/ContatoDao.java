@@ -1,5 +1,6 @@
 package com.sistema.lista.telefonica.infraestrutura.persistense.contato.dao;
 
+import com.sistema.lista.telefonica.dto.ContatoResponse;
 import com.sistema.lista.telefonica.exception.contato.ContatoBancoDadosException;
 import com.sistema.lista.telefonica.infraestrutura.persistense.conexao.ConexaoFactory;
 import com.sistema.lista.telefonica.model.Contato;
@@ -101,4 +102,42 @@ public class ContatoDao {
 
     }
 
+    public Contato pegarContatoPorId(long id) {
+        String consulta = """
+                SELECT id
+                       , nome
+                       , telefone
+                       , email
+                       , observacao
+                FROM contato
+                WHERE id == ?
+                """;
+        List<Contato> contatoList = new ArrayList<>();
+
+        try(Connection connection = ConexaoFactory.conectar();
+            PreparedStatement preparedStatement = connection.prepareStatement(consulta)){
+
+            preparedStatement.setLong(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                long idBancoDados = resultSet.getLong("id");
+                String nome = resultSet.getString("nome");
+                String telefone = resultSet.getString("telefone");
+                String email = resultSet.getString("email");
+                String observacao = resultSet.getString("observacao");
+
+                return new Contato(idBancoDados, nome, new Telefone(telefone), new Email(email), observacao);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new ContatoBancoDadosException("Erro ao se conectar no banco de dados");
+        }
+
+        return null;
+
+    }
 }

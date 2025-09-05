@@ -2,6 +2,7 @@ package com.sistema.lista.telefonica.view;
 
 import com.sistema.lista.telefonica.dto.ContatoRequest;
 import com.sistema.lista.telefonica.dto.ContatoResponse;
+import com.sistema.lista.telefonica.exception.contato.ContatoBancoDadosException;
 import com.sistema.lista.telefonica.infraestrutura.beans.ContatoBeans;
 import com.sistema.lista.telefonica.service.ContatoService;
 
@@ -46,7 +47,10 @@ public class MenuGeral {
                     case 1 -> cadastrar();
                     case 2 -> listarContatos();
                     case 3 -> buscarContatoPorNome();
+                    case 4 -> atualizarContato();
+                    case 5 -> deletarContato();
                     case 6 -> sair = true;
+                    default -> System.out.println("Opção invalida");
                 }
 
             } catch (RuntimeException runtimeException) {
@@ -60,6 +64,44 @@ public class MenuGeral {
         System.out.println("-------------------------------------------------------");
         System.out.println("                  SISTEMA ENCERRADO                    ");
         System.out.println("-------------------------------------------------------");
+
+    }
+
+    private static void deletarContato() {
+        System.out.println("-------------------------------------------------------");
+        System.out.println("                   DELETAR CONTATO                     ");
+        System.out.println("-------------------------------------------------------");
+        System.out.println();
+    }
+
+    private static void atualizarContato() {
+        System.out.println("-------------------------------------------------------");
+        System.out.println("                ATUALIZAR CONTATO                      ");
+        System.out.println("-------------------------------------------------------");
+        System.out.println(" Digite o id do contato que deseja alterar: ");
+        long id = scanner.nextLong();
+
+        var contatoResponse = contatoService.pegarUsuarioPorId(id);
+
+        if(contatoResponse == null) throw new ContatoBancoDadosException("Contato não existe");
+
+        System.out.println("------------------------");
+        System.out.println(" Dados antigos: ");
+        System.out.println(contatoResponse);
+
+        System.out.println("------------------------");
+
+        System.out.println("Insira o novo telefone: ");
+        String novoTelefone = scanner.nextLine();
+
+        System.out.println("Insira o novo email: ");
+        String novoEmail = scanner.nextLine();
+
+        System.out.println("Insira a nova observação: ");
+        String novaObservacao = scanner.nextLine();
+
+        System.out.println("-------------------------------------------------------");
+
 
     }
 
