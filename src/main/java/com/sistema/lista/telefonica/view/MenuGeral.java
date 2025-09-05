@@ -8,8 +8,10 @@ import com.sistema.lista.telefonica.service.ContatoService;
 import java.util.List;
 import java.util.Scanner;
 
+import static com.sistema.lista.telefonica.infraestrutura.util.ContatoUtils.listarContatosResponse;
+
 public class MenuGeral {
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     private static final ContatoService contatoService = ContatoBeans.instanceService();
 
@@ -66,13 +68,11 @@ public class MenuGeral {
         System.out.println(" Digite o nome do contato que deseja buscar: ");
         String nome = scanner.nextLine();
 
-        List<ContatoResponse> contatoResponseList = contatoService.buscarContatoPorNome(nome);
+        System.out.println("-------------------------------------------------------");
 
-        if(contatoResponseList.isEmpty()) {
-            System.out.println(" Nenhum contato com esse nome ");
-        } else {
-            contatoResponseList.forEach(System.out::println);
-        }
+        List<ContatoResponse> contatoResponses = contatoService.buscarContatoPorNome(nome);
+
+        listarContatosResponse(contatoResponses);
 
         System.out.println("-------------------------------------------------------");
 
@@ -87,11 +87,7 @@ public class MenuGeral {
         System.out.println("-------------------------------------------------------");
         System.out.println(" ");
 
-        if(contatoResponses.isEmpty()) {
-            System.out.println(" Nenhum contato adicionado ");
-        } else {
-            contatoResponses.forEach(System.out::println);
-        }
+        listarContatosResponse(contatoResponses);
 
         System.out.println("-------------------------------------------------------");
 

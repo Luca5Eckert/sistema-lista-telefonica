@@ -1,11 +1,8 @@
 package com.sistema.lista.telefonica.model;
 
-import com.sistema.lista.telefonica.exception.contato.EmailBlankException;
 import com.sistema.lista.telefonica.exception.contato.NomeBlankException;
-import com.sistema.lista.telefonica.exception.contato.TelefoneBlankException;
 import com.sistema.lista.telefonica.model.valueobjects.Email;
 import com.sistema.lista.telefonica.model.valueobjects.Telefone;
-import org.apache.commons.lang3.math.NumberUtils;
 
 public class Contato {
 
@@ -18,11 +15,6 @@ public class Contato {
     private Email email;
 
     private String observacao;
-
-
-    public Contato() {
-        this.id = -1;
-    }
 
     public Contato(String nome, Telefone telefone, Email email, String observacao) {
         this.id = -1;
@@ -60,7 +52,6 @@ public class Contato {
     }
 
     public void setTelefone(Telefone telefone) {
-
         this.telefone = telefone;
     }
 
