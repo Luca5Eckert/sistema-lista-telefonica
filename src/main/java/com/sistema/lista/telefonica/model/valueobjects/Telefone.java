@@ -7,7 +7,6 @@ public class Telefone {
 
     private final String value;
 
-
     public Telefone(String value) {
         if(value.isBlank()){
             throw new TelefoneBlankException("Telefone não pode ser branco");

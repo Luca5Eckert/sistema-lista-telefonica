@@ -57,7 +57,9 @@ public class MenuGeral {
 
         }
 
-        System.out.println("            SISTEMA ENCERRADO            ");
+        System.out.println("-------------------------------------------------------");
+        System.out.println("                  SISTEMA ENCERRADO                    ");
+        System.out.println("-------------------------------------------------------");
 
     }
 
