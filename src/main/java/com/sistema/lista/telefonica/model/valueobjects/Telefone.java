@@ -11,11 +11,11 @@ public class Telefone {
         if(value.isBlank()){
             throw new TelefoneBlankException("Telefone não pode ser branco");
         }
-        if(value.length() != 9){
-            throw new TelefoneBlankException("Telefone precisa ter 9 digitos");
-        }
         if(!NumberUtils.isCreatable(value)){
             throw new TelefoneBlankException("Telefone precisa ser apenas digitos");
+        }
+        if(value.length() != 9){
+            throw new TelefoneBlankException("Telefone precisa ter 9 digitos");
         }
 
         this.value = value;

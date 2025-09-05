@@ -1,4 +1,4 @@
-package com.sistema.lista.telefonica.infraestrutura.persistense.contato.repository;
+package com.sistema.lista.telefonica.service.port;
 
 import com.sistema.lista.telefonica.model.Contato;
 

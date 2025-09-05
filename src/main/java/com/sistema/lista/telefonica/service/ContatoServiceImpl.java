@@ -3,7 +3,7 @@ package com.sistema.lista.telefonica.service;
 import com.sistema.lista.telefonica.dto.ContatoRequest;
 import com.sistema.lista.telefonica.dto.ContatoResponse;
 import com.sistema.lista.telefonica.infraestrutura.persistense.contato.mapper.ContatoMapper;
-import com.sistema.lista.telefonica.infraestrutura.persistense.contato.repository.ContatoRepository;
+import com.sistema.lista.telefonica.service.port.ContatoRepository;
 import com.sistema.lista.telefonica.model.Contato;
 
 import java.util.List;

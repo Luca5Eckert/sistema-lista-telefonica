@@ -2,6 +2,7 @@ package com.sistema.lista.telefonica.infraestrutura.persistense.contato.reposito
 
 import com.sistema.lista.telefonica.infraestrutura.persistense.contato.dao.ContatoDao;
 import com.sistema.lista.telefonica.model.Contato;
+import com.sistema.lista.telefonica.service.port.ContatoRepository;
 
 import java.util.List;
 

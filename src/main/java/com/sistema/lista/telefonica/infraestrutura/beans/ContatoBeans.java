@@ -2,9 +2,8 @@ package com.sistema.lista.telefonica.infraestrutura.beans;
 
 import com.sistema.lista.telefonica.infraestrutura.persistense.contato.dao.ContatoDao;
 import com.sistema.lista.telefonica.infraestrutura.persistense.contato.mapper.ContatoMapper;
-import com.sistema.lista.telefonica.infraestrutura.persistense.contato.repository.ContatoRepository;
+import com.sistema.lista.telefonica.service.port.ContatoRepository;
 import com.sistema.lista.telefonica.infraestrutura.persistense.contato.repository.ContatoRepositoryAdapter;
-import com.sistema.lista.telefonica.model.Contato;
 import com.sistema.lista.telefonica.service.ContatoService;
 import com.sistema.lista.telefonica.service.ContatoServiceImpl;
 
