@@ -4,7 +4,7 @@ import com.sistema.lista.telefonica.dto.ContatoAtualizaRequest;
 import com.sistema.lista.telefonica.dto.ContatoRequest;
 import com.sistema.lista.telefonica.dto.ContatoResponse;
 import com.sistema.lista.telefonica.infraestrutura.beans.ContatoBeans;
-import com.sistema.lista.telefonica.service.ContatoService;
+import com.sistema.lista.telefonica.view.port.ContatoService;
 
 import java.util.List;
 import java.util.Scanner;

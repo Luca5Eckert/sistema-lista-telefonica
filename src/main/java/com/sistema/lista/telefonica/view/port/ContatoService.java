@@ -1,4 +1,4 @@
-package com.sistema.lista.telefonica.service;
+package com.sistema.lista.telefonica.view.port;
 
 import com.sistema.lista.telefonica.dto.ContatoAtualizaRequest;
 import com.sistema.lista.telefonica.dto.ContatoRequest;
@@ -13,7 +13,6 @@ public interface ContatoService {
     List<ContatoResponse> pegarContatos();
 
     List<ContatoResponse> buscarContatoPorNome(String nome);
-
 
     ContatoResponse pegarUsuarioPorId(long id);
 

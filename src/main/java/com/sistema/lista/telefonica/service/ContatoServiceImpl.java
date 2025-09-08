@@ -8,11 +8,12 @@ import com.sistema.lista.telefonica.exception.contato.EmailUsadoException;
 import com.sistema.lista.telefonica.infraestrutura.persistense.contato.mapper.ContatoMapper;
 import com.sistema.lista.telefonica.service.port.ContatoRepository;
 import com.sistema.lista.telefonica.model.Contato;
+import com.sistema.lista.telefonica.view.port.ContatoService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ContatoServiceImpl implements ContatoService{
+public class ContatoServiceImpl implements ContatoService {
 
     private final ContatoRepository contatoRepository;
     private final ContatoMapper contatoMapper;

@@ -4,7 +4,7 @@ import com.sistema.lista.telefonica.infraestrutura.persistense.contato.dao.Conta
 import com.sistema.lista.telefonica.infraestrutura.persistense.contato.mapper.ContatoMapper;
 import com.sistema.lista.telefonica.service.port.ContatoRepository;
 import com.sistema.lista.telefonica.infraestrutura.persistense.contato.repository.ContatoRepositoryAdapter;
-import com.sistema.lista.telefonica.service.ContatoService;
+import com.sistema.lista.telefonica.view.port.ContatoService;
 import com.sistema.lista.telefonica.service.ContatoServiceImpl;
 
 public class ContatoBeans {
