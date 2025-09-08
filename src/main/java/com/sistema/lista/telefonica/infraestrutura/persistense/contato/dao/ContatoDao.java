@@ -19,8 +19,8 @@ public class ContatoDao {
             PreparedStatement preparedStatement = connection.prepareStatement(consulta)){
 
             preparedStatement.setString(1, contato.getNome());
-            preparedStatement.setString(2, contato.getTelefone().getValue());
-            preparedStatement.setString(3, contato.getEmail().getValue());
+            preparedStatement.setString(2, contato.getTelefone().value());
+            preparedStatement.setString(3, contato.getEmail().value());
             preparedStatement.setString(4, contato.getObservacao());
 
             preparedStatement.executeUpdate();
@@ -149,8 +149,8 @@ public class ContatoDao {
         try(Connection connection = ConexaoFactory.conectar();
             PreparedStatement statement = connection.prepareStatement(consulta)){
 
-            statement.setString(1, contato.getEmail().getValue());
-            statement.setString(2, contato.getTelefone().getValue());
+            statement.setString(1, contato.getEmail().value());
+            statement.setString(2, contato.getTelefone().value());
             statement.setString(3, contato.getObservacao());
             statement.setLong(4, contato.getId());
 
@@ -173,7 +173,7 @@ public class ContatoDao {
         try(Connection connection = ConexaoFactory.conectar();
             PreparedStatement statement = connection.prepareStatement(consulta)){
 
-            statement.setString(1, email.getValue());
+            statement.setString(1, email.value());
 
             ResultSet resultSet = statement.executeQuery();
 

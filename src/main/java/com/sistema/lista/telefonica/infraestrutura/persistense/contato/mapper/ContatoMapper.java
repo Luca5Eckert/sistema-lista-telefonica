@@ -17,7 +17,7 @@ public class ContatoMapper {
     }
 
     public ContatoResponse toResponse(Contato contato){
-        return new ContatoResponse(contato.getId(), contato.getNome(), contato.getTelefone().getValue(), contato.getEmail().getValue(), contato.getObservacao());
+        return new ContatoResponse(contato.getId(), contato.getNome(), contato.getTelefone().value(), contato.getEmail().value(), contato.getObservacao());
     }
 
     public Contato toEntity(ContatoAtualizaRequest contatoAtualizaRequest, long id) {
