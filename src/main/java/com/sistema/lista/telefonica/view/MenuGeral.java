@@ -40,16 +40,15 @@ public class MenuGeral {
                 System.out.println("-------------------------------------------------------");
 
 
-                int opcao = scanner.nextInt();
-                scanner.nextLine();
+                String opcao = scanner.nextLine();
 
                 switch (opcao) {
-                    case 1 -> cadastrar();
-                    case 2 -> listarContatos();
-                    case 3 -> buscarContatoPorNome();
-                    case 4 -> atualizarContato();
-                    case 5 -> deletarContato();
-                    case 6 -> sair = true;
+                    case "1" -> cadastrar();
+                    case "2" -> listarContatos();
+                    case "3" -> buscarContatoPorNome();
+                    case "4" -> atualizarContato();
+                    case "5" -> deletarContato();
+                    case "6" -> sair = true;
                     default -> System.out.println("Opção invalida");
                 }
 
