@@ -3,6 +3,7 @@ package com.sistema.lista.telefonica.infraestrutura.persistense.contato.reposito
 import com.sistema.lista.telefonica.dto.ContatoResponse;
 import com.sistema.lista.telefonica.infraestrutura.persistense.contato.dao.ContatoDao;
 import com.sistema.lista.telefonica.model.Contato;
+import com.sistema.lista.telefonica.model.valueobjects.Email;
 import com.sistema.lista.telefonica.service.port.ContatoRepository;
 
 import java.util.List;
@@ -38,5 +39,10 @@ public class ContatoRepositoryAdapter implements ContatoRepository {
     @Override
     public void atualizarPorId(Contato contato) {
         contatoDao.atualizarContatoPorId(contato);
+    }
+
+    @Override
+    public boolean existeComEmail(Email email) {
+        return contatoDao.existeComEmail(email);
     }
 }

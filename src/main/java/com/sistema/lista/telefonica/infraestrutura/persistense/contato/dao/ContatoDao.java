@@ -164,4 +164,28 @@ public class ContatoDao {
         }
 
     }
+
+    public boolean existeComEmail(Email email) {
+        String consulta = """
+                SELECT email
+                FROM contato
+                WHERE email = ?
+                """;
+
+        try(Connection connection = ConexaoFactory.conectar();
+            PreparedStatement statement = connection.prepareStatement(consulta)){
+
+            statement.setString(1, email.getValue());
+
+            ResultSet resultSet = statement.executeQuery();
+
+            return resultSet.next();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new ContatoBancoDadosException("Erro ao se conectar no banco de dados");
+        }
+
+    }
+
 }

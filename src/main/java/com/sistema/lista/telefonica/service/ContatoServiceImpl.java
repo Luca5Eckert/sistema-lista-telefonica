@@ -3,6 +3,7 @@ package com.sistema.lista.telefonica.service;
 import com.sistema.lista.telefonica.dto.ContatoAtualizaRequest;
 import com.sistema.lista.telefonica.dto.ContatoRequest;
 import com.sistema.lista.telefonica.dto.ContatoResponse;
+import com.sistema.lista.telefonica.exception.contato.EmailUsadoException;
 import com.sistema.lista.telefonica.infraestrutura.persistense.contato.mapper.ContatoMapper;
 import com.sistema.lista.telefonica.service.port.ContatoRepository;
 import com.sistema.lista.telefonica.model.Contato;
@@ -23,6 +24,10 @@ public class ContatoServiceImpl implements ContatoService{
     @Override
     public void adicionarContato(ContatoRequest contatoRequest) {
         Contato contato = contatoMapper.toEntity(contatoRequest);
+
+        if(contatoRepository.existeComEmail(contato.getEmail())){
+            throw new EmailUsadoException("O email já está em uso");
+        }
 
         contatoRepository.inserir(contato);
     }
