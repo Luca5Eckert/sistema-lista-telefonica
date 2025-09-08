@@ -1,6 +1,5 @@
 package com.sistema.lista.telefonica.service.port;
 
-import com.sistema.lista.telefonica.dto.ContatoResponse;
 import com.sistema.lista.telefonica.model.Contato;
 import com.sistema.lista.telefonica.model.valueobjects.Email;
 

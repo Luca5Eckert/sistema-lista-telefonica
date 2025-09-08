@@ -3,7 +3,6 @@ package com.sistema.lista.telefonica.view;
 import com.sistema.lista.telefonica.dto.ContatoAtualizaRequest;
 import com.sistema.lista.telefonica.dto.ContatoRequest;
 import com.sistema.lista.telefonica.dto.ContatoResponse;
-import com.sistema.lista.telefonica.exception.contato.ContatoBancoDadosException;
 import com.sistema.lista.telefonica.infraestrutura.beans.ContatoBeans;
 import com.sistema.lista.telefonica.service.ContatoService;
 

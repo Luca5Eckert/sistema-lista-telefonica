@@ -1,6 +1,5 @@
 package com.sistema.lista.telefonica.infraestrutura.persistense.contato.dao;
 
-import com.sistema.lista.telefonica.dto.ContatoResponse;
 import com.sistema.lista.telefonica.exception.contato.ContatoBancoDadosException;
 import com.sistema.lista.telefonica.infraestrutura.persistense.conexao.ConexaoFactory;
 import com.sistema.lista.telefonica.model.Contato;
@@ -112,7 +111,6 @@ public class ContatoDao {
                 FROM contato
                 WHERE id = ?
                 """;
-        List<Contato> contatoList = new ArrayList<>();
 
         try(Connection connection = ConexaoFactory.conectar();
             PreparedStatement preparedStatement = connection.prepareStatement(consulta)){
@@ -121,7 +119,7 @@ public class ContatoDao {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while(resultSet.next()){
+            if(resultSet.next()){
                 long idBancoDados = resultSet.getLong("id");
                 String nome = resultSet.getString("nome");
                 String telefone = resultSet.getString("telefone");
