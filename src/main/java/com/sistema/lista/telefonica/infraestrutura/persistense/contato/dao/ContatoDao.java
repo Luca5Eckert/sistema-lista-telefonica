@@ -110,7 +110,7 @@ public class ContatoDao {
                        , email
                        , observacao
                 FROM contato
-                WHERE id == ?
+                WHERE id = ?
                 """;
         List<Contato> contatoList = new ArrayList<>();
 
@@ -138,6 +138,30 @@ public class ContatoDao {
         }
 
         return null;
+
+    }
+
+    public void atualizarContatoPorId(Contato contato) {
+        String consulta = """
+                UPDATE contato
+                SET email = ?, telefone = ?, observacao = ?
+                WHERE id = ?
+                """;
+
+        try(Connection connection = ConexaoFactory.conectar();
+            PreparedStatement statement = connection.prepareStatement(consulta)){
+
+            statement.setString(1, contato.getEmail().getValue());
+            statement.setString(2, contato.getTelefone().getValue());
+            statement.setString(3, contato.getObservacao());
+            statement.setLong(4, contato.getId());
+
+            statement.executeUpdate();
+
+        } catch (SQLException sqlException){
+            sqlException.printStackTrace();
+            throw new ContatoBancoDadosException("Erro ao se conectar no banco de dados");
+        }
 
     }
 }

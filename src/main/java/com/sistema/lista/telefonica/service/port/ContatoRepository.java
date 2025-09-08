@@ -14,4 +14,6 @@ public interface ContatoRepository {
     List<Contato> buscarContatoPorNome(String nome);
 
     Contato buscarContatoPorId(long id);
+
+    void atualizarPorId(Contato contato);
 }

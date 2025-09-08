@@ -34,4 +34,9 @@ public class ContatoRepositoryAdapter implements ContatoRepository {
     public Contato buscarContatoPorId(long id) {
         return contatoDao.pegarContatoPorId(id);
     }
+
+    @Override
+    public void atualizarPorId(Contato contato) {
+        contatoDao.atualizarContatoPorId(contato);
+    }
 }

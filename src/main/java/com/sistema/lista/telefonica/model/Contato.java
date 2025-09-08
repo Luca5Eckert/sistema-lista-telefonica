@@ -24,6 +24,13 @@ public class Contato {
         setObservacao(observacao);
     }
 
+    public Contato(long id, Telefone telefone, Email email, String observacao) {
+        this.id = id;
+        this.telefone = telefone;
+        this.email = email;
+        setObservacao(observacao);
+    }
+
     public Contato(long id, String nome, Telefone telefone, Email email, String observacao) {
         this.id = id;
         setNome(nome);

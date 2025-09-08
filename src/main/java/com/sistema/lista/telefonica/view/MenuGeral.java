@@ -1,5 +1,6 @@
 package com.sistema.lista.telefonica.view;
 
+import com.sistema.lista.telefonica.dto.ContatoAtualizaRequest;
 import com.sistema.lista.telefonica.dto.ContatoRequest;
 import com.sistema.lista.telefonica.dto.ContatoResponse;
 import com.sistema.lista.telefonica.exception.contato.ContatoBancoDadosException;
@@ -80,6 +81,7 @@ public class MenuGeral {
         System.out.println("-------------------------------------------------------");
         System.out.println(" Digite o id do contato que deseja alterar: ");
         long id = scanner.nextLong();
+        scanner.nextLine();
 
         var contatoResponse = contatoService.pegarUsuarioPorId(id);
 
@@ -87,7 +89,7 @@ public class MenuGeral {
 
         System.out.println("------------------------");
         System.out.println(" Dados antigos: ");
-        System.out.println(contatoResponse);
+        contatoResponse.imprimirVerticalmente();
 
         System.out.println("------------------------");
 
@@ -101,6 +103,12 @@ public class MenuGeral {
         String novaObservacao = scanner.nextLine();
 
         System.out.println("-------------------------------------------------------");
+
+        ContatoAtualizaRequest contatoAtualizaRequest = new ContatoAtualizaRequest(novoTelefone, novoEmail, novaObservacao);
+
+        contatoService.atualizarContato(contatoAtualizaRequest, id);
+
+        System.out.println("Atualizado com sucesso");
 
 
     }
@@ -129,7 +137,6 @@ public class MenuGeral {
         System.out.println("-------------------------------------------------------");
         System.out.println("                      CONTATOS                         ");
         System.out.println("-------------------------------------------------------");
-        System.out.println(" ");
 
         listarContatosResponse(contatoResponses);
 

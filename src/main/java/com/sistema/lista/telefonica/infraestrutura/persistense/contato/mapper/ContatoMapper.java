@@ -1,5 +1,6 @@
 package com.sistema.lista.telefonica.infraestrutura.persistense.contato.mapper;
 
+import com.sistema.lista.telefonica.dto.ContatoAtualizaRequest;
 import com.sistema.lista.telefonica.dto.ContatoRequest;
 import com.sistema.lista.telefonica.dto.ContatoResponse;
 import com.sistema.lista.telefonica.model.Contato;
@@ -17,5 +18,12 @@ public class ContatoMapper {
 
     public ContatoResponse toResponse(Contato contato){
         return new ContatoResponse(contato.getId(), contato.getNome(), contato.getTelefone().getValue(), contato.getEmail().getValue(), contato.getObservacao());
+    }
+
+    public Contato toEntity(ContatoAtualizaRequest contatoAtualizaRequest, long id) {
+        Telefone telefone = new Telefone(contatoAtualizaRequest.novoTelefone());
+        Email email = new Email(contatoAtualizaRequest.novoEmail());
+
+        return new Contato(id, telefone, email, contatoAtualizaRequest.novaObservacao());
     }
 }

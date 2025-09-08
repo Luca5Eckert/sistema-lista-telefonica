@@ -11,8 +11,14 @@ public class ContatoUtils {
         if(contatoResponses.isEmpty()) {
             System.out.println(" Nenhum contato correspondente ");
         } else {
-            contatoResponses.forEach(System.out::println);
+            contatoResponses.forEach(ContatoUtils::imprimirContato);
         }
+    }
+
+    private static void imprimirContato(ContatoResponse contatoResponse) {
+        System.out.println("---");
+        System.out.println(contatoResponse);
+        System.out.println("---");
     }
 
 

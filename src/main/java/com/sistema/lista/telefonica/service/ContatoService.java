@@ -1,5 +1,6 @@
 package com.sistema.lista.telefonica.service;
 
+import com.sistema.lista.telefonica.dto.ContatoAtualizaRequest;
 import com.sistema.lista.telefonica.dto.ContatoRequest;
 import com.sistema.lista.telefonica.dto.ContatoResponse;
 
@@ -15,4 +16,6 @@ public interface ContatoService {
 
 
     ContatoResponse pegarUsuarioPorId(long id);
+
+    void atualizarContato(ContatoAtualizaRequest contatoAtualizaRequest, long id);
 }

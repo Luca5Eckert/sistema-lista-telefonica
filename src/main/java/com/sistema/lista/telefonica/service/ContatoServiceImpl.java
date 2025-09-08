@@ -1,5 +1,6 @@
 package com.sistema.lista.telefonica.service;
 
+import com.sistema.lista.telefonica.dto.ContatoAtualizaRequest;
 import com.sistema.lista.telefonica.dto.ContatoRequest;
 import com.sistema.lista.telefonica.dto.ContatoResponse;
 import com.sistema.lista.telefonica.infraestrutura.persistense.contato.mapper.ContatoMapper;
@@ -22,6 +23,7 @@ public class ContatoServiceImpl implements ContatoService{
     @Override
     public void adicionarContato(ContatoRequest contatoRequest) {
         Contato contato = contatoMapper.toEntity(contatoRequest);
+
         contatoRepository.inserir(contato);
     }
 
@@ -41,6 +43,13 @@ public class ContatoServiceImpl implements ContatoService{
     public ContatoResponse pegarUsuarioPorId(long id) {
         var contato = contatoRepository.buscarContatoPorId(id);
         return contatoMapper.toResponse(contato);
+    }
+
+    @Override
+    public void atualizarContato(ContatoAtualizaRequest contatoAtualizaRequest, long id) {
+        Contato contato = contatoMapper.toEntity(contatoAtualizaRequest, id);
+
+        contatoRepository.atualizarPorId(contato);
     }
 
 }
