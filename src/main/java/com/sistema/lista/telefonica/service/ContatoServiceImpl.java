@@ -3,6 +3,7 @@ package com.sistema.lista.telefonica.service;
 import com.sistema.lista.telefonica.dto.ContatoAtualizaRequest;
 import com.sistema.lista.telefonica.dto.ContatoRequest;
 import com.sistema.lista.telefonica.dto.ContatoResponse;
+import com.sistema.lista.telefonica.exception.contato.ContatoBancoDadosException;
 import com.sistema.lista.telefonica.exception.contato.EmailUsadoException;
 import com.sistema.lista.telefonica.infraestrutura.persistense.contato.mapper.ContatoMapper;
 import com.sistema.lista.telefonica.service.port.ContatoRepository;
@@ -47,6 +48,9 @@ public class ContatoServiceImpl implements ContatoService{
     @Override
     public ContatoResponse pegarUsuarioPorId(long id) {
         var contato = contatoRepository.buscarContatoPorId(id);
+
+        if(contato == null) throw new ContatoBancoDadosException("Contato com id " + id + " não encontrado");
+
         return contatoMapper.toResponse(contato);
     }
 
@@ -55,6 +59,11 @@ public class ContatoServiceImpl implements ContatoService{
         Contato contato = contatoMapper.toEntity(contatoAtualizaRequest, id);
 
         contatoRepository.atualizarPorId(contato);
+    }
+
+    @Override
+    public void deletarContato(long id) {
+        contatoRepository.deletarPorId(id);
     }
 
 }

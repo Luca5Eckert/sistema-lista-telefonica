@@ -18,4 +18,6 @@ public interface ContatoService {
     ContatoResponse pegarUsuarioPorId(long id);
 
     void atualizarContato(ContatoAtualizaRequest contatoAtualizaRequest, long id);
+
+    void deletarContato(long id);
 }

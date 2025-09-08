@@ -19,4 +19,6 @@ public interface ContatoRepository {
     void atualizarPorId(Contato contato);
 
     boolean existeComEmail(Email email);
+
+    void deletarPorId(long id);
 }

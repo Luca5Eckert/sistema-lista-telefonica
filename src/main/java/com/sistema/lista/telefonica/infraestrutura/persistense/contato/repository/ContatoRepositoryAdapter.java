@@ -45,4 +45,9 @@ public class ContatoRepositoryAdapter implements ContatoRepository {
     public boolean existeComEmail(Email email) {
         return contatoDao.existeComEmail(email);
     }
+
+    @Override
+    public void deletarPorId(long id) {
+        contatoDao.deletarPorId(id);
+    }
 }

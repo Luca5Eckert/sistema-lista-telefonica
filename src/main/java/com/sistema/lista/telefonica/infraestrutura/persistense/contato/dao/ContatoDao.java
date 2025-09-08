@@ -188,4 +188,23 @@ public class ContatoDao {
 
     }
 
+    public void deletarPorId(long id) {
+        String consulta = """
+                DELETE FROM contato
+                WHERE id = ?
+                """;
+
+        try(Connection connection = ConexaoFactory.conectar();
+            PreparedStatement statement = connection.prepareStatement(consulta)){
+
+            statement.setLong(1, id);
+
+            statement.executeUpdate();
+
+        } catch (SQLException e){
+            e.printStackTrace();
+            throw new ContatoBancoDadosException("Erro ao se conectar no banco de dados");
+        }
+
+    }
 }

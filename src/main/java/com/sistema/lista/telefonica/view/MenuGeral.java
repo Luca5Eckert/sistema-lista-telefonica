@@ -72,7 +72,25 @@ public class MenuGeral {
         System.out.println("-------------------------------------------------------");
         System.out.println("                   DELETAR CONTATO                     ");
         System.out.println("-------------------------------------------------------");
-        System.out.println();
+        System.out.println(" Digite o id do contato que deseja deletar: ");
+        long id = scanner.nextLong();
+        scanner.nextLine();
+
+        var contatoResponse = contatoService.pegarUsuarioPorId(id);
+
+        System.out.println(" Tem certeza que deseja deletar o contato do " + contatoResponse.email());
+        System.out.println(" C- Confirmar");
+        System.out.println(" X- Cancelar");
+        String inputConfirmacao = scanner.nextLine();
+
+        if(inputConfirmacao.equalsIgnoreCase("C")){
+            contatoService.deletarContato(id);
+            System.out.println(" Contato deletado com sucesso");
+            return;
+        }
+
+        System.out.println(" Ação cancelada com sucesso");
+
     }
 
     private static void atualizarContato() {
@@ -84,8 +102,6 @@ public class MenuGeral {
         scanner.nextLine();
 
         var contatoResponse = contatoService.pegarUsuarioPorId(id);
-
-        if(contatoResponse == null) throw new ContatoBancoDadosException("Contato não existe");
 
         System.out.println("------------------------");
         System.out.println(" Dados antigos: ");
