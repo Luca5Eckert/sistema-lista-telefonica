@@ -7,12 +7,11 @@ import com.sistema.lista.telefonica.infraestrutura.beans.ContatoBeans;
 import com.sistema.lista.telefonica.view.port.ContatoService;
 
 import java.util.List;
-import java.util.Scanner;
 
 import static com.sistema.lista.telefonica.infraestrutura.util.ContatoUtils.listarContatosResponse;
 
 public class MenuGeral {
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final Leitor leitor = new Leitor();
 
     private static final ContatoService contatoService = ContatoBeans.instanceService();
 
@@ -40,7 +39,7 @@ public class MenuGeral {
                 System.out.println("-------------------------------------------------------");
 
 
-                String opcao = scanner.nextLine();
+                String opcao = leitor.nextLine();
 
                 switch (opcao) {
                     case "1" -> cadastrar();
@@ -71,15 +70,15 @@ public class MenuGeral {
         System.out.println("                   DELETAR CONTATO                     ");
         System.out.println("-------------------------------------------------------");
         System.out.println(" Digite o id do contato que deseja deletar: ");
-        long id = scanner.nextLong();
-        scanner.nextLine();
+        long id = leitor.nextLong();
+        leitor.nextLine();
 
         var contatoResponse = contatoService.pegarUsuarioPorId(id);
 
         System.out.println(" Tem certeza que deseja deletar o contato do " + contatoResponse.email());
         System.out.println(" C- Confirmar");
         System.out.println(" X- Cancelar");
-        String inputConfirmacao = scanner.nextLine();
+        String inputConfirmacao = leitor.nextLine();
 
         if(inputConfirmacao.equalsIgnoreCase("C")){
             contatoService.deletarContato(id);
@@ -96,8 +95,8 @@ public class MenuGeral {
         System.out.println("                ATUALIZAR CONTATO                      ");
         System.out.println("-------------------------------------------------------");
         System.out.println(" Digite o id do contato que deseja alterar: ");
-        long id = scanner.nextLong();
-        scanner.nextLine();
+        long id = leitor.nextLong();
+        leitor.nextLine();
 
         var contatoResponse = contatoService.pegarUsuarioPorId(id);
 
@@ -108,13 +107,13 @@ public class MenuGeral {
         System.out.println("------------------------");
 
         System.out.println("Insira o novo telefone: ");
-        String novoTelefone = scanner.nextLine();
+        String novoTelefone = leitor.nextLine();
 
         System.out.println("Insira o novo email: ");
-        String novoEmail = scanner.nextLine();
+        String novoEmail = leitor.nextLine();
 
         System.out.println("Insira a nova observação: ");
-        String novaObservacao = scanner.nextLine();
+        String novaObservacao = leitor.nextLine();
 
         System.out.println("-------------------------------------------------------");
 
@@ -132,7 +131,7 @@ public class MenuGeral {
         System.out.println("                       BUSCA                           ");
         System.out.println("-------------------------------------------------------");
         System.out.println(" Digite o nome do contato que deseja buscar: ");
-        String nome = scanner.nextLine();
+        String nome = leitor.nextLine();
 
         System.out.println("-------------------------------------------------------");
 
@@ -164,16 +163,16 @@ public class MenuGeral {
         System.out.println("-------------------------------------------------------");
 
         System.out.println("Nome do contato: ");
-        String nome = scanner.nextLine();
+        String nome = leitor.nextLine();
 
         System.out.println("Telefone do contato: ");
-        String telefone = scanner.nextLine();
+        String telefone = leitor.nextLine();
 
         System.out.println("Email do contato: ");
-        String email = scanner.nextLine();
+        String email = leitor.nextLine();
 
         System.out.println("Digite a observação: ");
-        String observacao = scanner.nextLine();
+        String observacao = leitor.nextLine();
 
         System.out.println("-------------------------------------------------------");
 
