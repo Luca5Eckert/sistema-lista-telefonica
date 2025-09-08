@@ -15,7 +15,7 @@ public class Telefone {
             throw new TelefoneBlankException("Telefone precisa ser apenas digitos");
         }
         if(value.length() != 9){
-            throw new TelefoneBlankException("Telefone precisa ter 9 digitos");
+            throw new TelefoneBlankException("Telefone precisa ter 9 digitos exatos");
         }
 
         this.value = value;
